@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDB Multiplayer Pixel Painting Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>GraphDB P2P Realtime Multiplayer Pixel Painting</h1>
+        
+        <div class="controls">
+            <div class="color-picker">
+                <input type="color" id="colorPicker" value="#000000">
+                <label for="colorPicker">Select Color</label>
+            </div>
+            
+            <div class="tools">
+                <button id="clearBtn">Clear Canvas</button>
+                <button id="saveBtn">Save Image</button>
+            </div>
+        </div>
+        
+        <div class="canvas-container">
+            <div id="pixelCanvas" class="pixel-canvas"></div>
+        </div>
+        
+        <div class="user-info">
+            <input type="text" id="username" placeholder="Enter your username">
+            <span id="onlineUsers">Online: 1</span>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

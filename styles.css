@@ -1,111 +1,182 @@
+/* styles.css */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
+html, body {
+  height: 100%;
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
-  padding: 20px;
+  background-color: #333; /* Un fondo oscuro para la app completa */
+  color: #f0f0f0;
+  overflow: hidden; /* Evitar scroll en el body */
 }
 
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.controls {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
+.app-container {
+  display: grid;
+  height: 100vh; /* Ocupar toda la altura de la ventana */
+  grid-template-columns: 250px 1fr; /* Columna para controles, resto para canvas */
+  grid-template-rows: auto 1fr auto; /* Header, contenido principal, footer */
+  grid-template-areas:
+    "header header"
+    "controls canvas"
+    "userinfo userinfo";
+  gap: 10px;
   padding: 10px;
-  background-color: #f0f0f0;
-  border-radius: 5px;
+  background-color: #282c34;
 }
 
-.color-picker {
+.app-header {
+  grid-area: header;
+  text-align: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #444;
+}
+.app-header h1 {
+  font-size: 1.5em;
+  color: #61dafb;
+}
+
+.app-controls {
+  grid-area: controls;
+  background-color: #3a3f47;
+  padding: 20px;
+  border-radius: 8px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.color-picker-container, .tools-container {
+  display: flex;
+  flex-direction: column;
   gap: 10px;
 }
-
-.color-picker input {
-  width: 50px;
+.color-picker-container label {
+  font-size: 0.9em;
+}
+#colorPicker {
+  width: 100%;
   height: 50px;
   border: none;
   cursor: pointer;
+  border-radius: 4px;
 }
-
-.tools {
-  display: flex;
-  gap: 10px;
-}
-
 button {
-  padding: 8px 16px;
-  background-color: #4CAF50;
-  color: white;
+  padding: 10px 15px;
+  background-color: #61dafb;
+  color: #282c34;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-weight: bold;
   transition: background-color 0.3s;
 }
-
 button:hover {
-  background-color: #45a049;
+  background-color: #52c7e8;
+}
+#clearBtn {
+    background-color: #ff6b6b;
+    color: white;
+}
+#clearBtn:hover {
+    background-color: #e05252;
 }
 
-.canvas-container {
+
+.app-canvas-area {
+  grid-area: canvas;
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  align-items: center;
+  background-color: #3a3f47;
+  border-radius: 8px;
+  overflow: hidden; /* Para que el canvas no desborde si es muy grande */
 }
 
 .pixel-canvas {
   display: grid;
-  grid-template-columns: repeat(32, 1fr);
-  grid-template-rows: repeat(32, 1fr);
-  width: 640px;
-  height: 640px;
-  border: 1px solid #ccc;
-  background-color: white;
+  /* El tamaño se definirá con JS para mantener la proporción,
+     o se puede usar aspect-ratio si los navegadores lo soportan bien */
+  grid-template-columns: repeat(var(--canvas-size, 32), 1fr);
+  grid-template-rows: repeat(var(--canvas-size, 32), 1fr);
+  
+  /* Hacemos que el canvas sea cuadrado y lo más grande posible sin desbordar */
+  width: min(85vw, 85vh); /* Ajusta según el espacio disponible en app-canvas-area */
+  height: min(85vw, 85vh); /* Ajusta según el espacio disponible en app-canvas-area */
+  max-width: 700px; /* Un máximo para que no sea gigante en pantallas grandes */
+  max-height: 700px;
+  aspect-ratio: 1 / 1; /* Mantiene la proporción cuadrada */
+
+  border: 2px solid #61dafb;
+  background-color: white; /* El fondo inicial de los píxeles */
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .pixel {
-  width: 100%;
-  height: 100%;
-  border: 1px solid #eee;
-  transition: background-color 0.1s;
+  /* width y height al 100% del grid cell */
+  border: 1px solid #eee; /* Borde muy sutil para ver las celdas */
+  transition: background-color 0.05s; /* Transición rápida para pintado */
+}
+.pixel:hover {
+    outline: 1px solid #61dafb; /* Resaltar al pasar el mouse */
+    z-index: 1;
 }
 
-.user-info {
+
+.app-user-info {
+  grid-area: userinfo;
+  background-color: #3a3f47;
+  padding: 10px 20px;
+  border-radius: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  background-color: #f0f0f0;
-  border-radius: 5px;
+  border-top: 1px solid #444;
 }
-
 #username {
   padding: 8px;
-  border: 1px solid #ddd;
+  border: 1px solid #555;
+  background-color: #282c34;
+  color: #f0f0f0;
   border-radius: 4px;
   width: 200px;
 }
-
 #onlineUsers {
   font-weight: bold;
-  color: #4CAF50;
+  color: #61dafb;
+}
+
+/* Media Query para pantallas más pequeñas (ej. móviles) */
+@media (max-width: 768px) {
+  .app-container {
+    grid-template-columns: 1fr; /* Una sola columna */
+    grid-template-rows: auto auto 1fr auto; /* Header, Controles, Canvas, Footer */
+    grid-template-areas:
+      "header"
+      "controls"
+      "canvas"
+      "userinfo";
+    overflow-y: auto; /* Permitir scroll si el contenido es muy alto en móvil */
+  }
+
+  .app-controls {
+    flex-direction: row; /* Controles en fila */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .color-picker-container {
+    flex-basis: 150px; /* Darle una base para que no se encoja demasiado */
+  }
+  .tools-container {
+    flex-basis: 200px; /* Darle una base */
+    display: flex;
+    flex-direction: row; /* Botones en fila */
+  }
+  
+  .pixel-canvas {
+    width: 90vw; 
+    height: 90vw; 
+  }
 }

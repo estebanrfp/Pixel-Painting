@@ -3,33 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GDB Multiplayer Pixel Painting Example</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>GDB Multiplayer Pixel Painting - New Layout</title>
+    <link rel="stylesheet" href="styles.css"> <!-- El CSS nuevo que te gustó -->
 </head>
 <body>
-    <div class="container">
-        <h1>GraphDB P2P Realtime Multiplayer Pixel Painting</h1>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>GraphDB P2P Realtime Pixel Painting</h1>
+        </header>
         
-        <div class="controls">
-            <div class="color-picker">
+        <aside class="app-controls">
+            <div class="color-picker-container">
                 <input type="color" id="colorPicker" value="#000000">
                 <label for="colorPicker">Select Color</label>
             </div>
-            
-            <div class="tools">
+            <div class="tools-container">
                 <button id="clearBtn">Clear Canvas</button>
-                <button id="saveBtn">Save Image</button>
+                <button id="saveLocalBtn">Save Image (Local)</button> 
+                <!-- No añadimos "Save to Cloud" por ahora -->
             </div>
-        </div>
+        </aside>
         
-        <div class="canvas-container">
-            <div id="pixelCanvas" class="pixel-canvas"></div>
-        </div>
+        <main class="app-canvas-area">
+            <div id="pixelCanvas" class="pixel-canvas">
+                <!-- Pixels will be generated here by JS -->
+            </div>
+        </main>
         
-        <div class="user-info">
+        <footer class="app-user-info">
             <input type="text" id="username" placeholder="Enter your username">
-            <span id="onlineUsers">Online: 1</span>
-        </div>
+            <span id="onlineUsers">Online: 0</span>
+        </footer>
     </div>
 
     <script type="module" src="./script.js"></script>

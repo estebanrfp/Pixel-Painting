@@ -1,4 +1,4 @@
-import { GraphDB } from "https://cdn.jsdelivr.net/npm/gdb-p2p@0/+esm";
+import { GraphDB } from "https://cdn.jsdelivr.net/npm/gdb-p2p/+esm";
 
 document.addEventListener('DOMContentLoaded', function () {
   const pixelCanvas = document.getElementById('pixelCanvas')

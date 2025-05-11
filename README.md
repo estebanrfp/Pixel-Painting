@@ -48,3 +48,6 @@ The app can adapt to different workflows depending on the painter's preferences.
 ## License
 
 This project is licensed under the MIT License.
+
+#### Credits
+[by Esteban Fuster Pozzi (estebanrfp)](https://github.com/estebanrfp)

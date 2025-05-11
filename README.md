@@ -35,7 +35,7 @@ A simple application designed to help painters track their progress, gather insp
 
 ## Demo
 
-You can view a live demo of the application at: [GitHub Pages](https://estebanrfp.github.io/Multiplayer-Pixel-Painting/)
+You can view a live demo of the application at: [GitHub Pages](https://estebanrfp.github.io/Pixel-Painting/)
 
 ## Inspiration
 

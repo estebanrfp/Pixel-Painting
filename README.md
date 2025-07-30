@@ -1,4 +1,4 @@
-# GDB Multiplayer Pixel Painting Example
+# GenosDB P2P Multiplayer Pixel Painting Example
 
 A simple application designed to help painters track their progress, gather inspiration, and manage their painting process effectively.
 
@@ -19,7 +19,7 @@ A simple application designed to help painters track their progress, gather insp
 - CSS3  
 - JavaScript (ES6+)  
 - Font Awesome for icons  
-- GraphDB for realtime comunication  
+- GenosDB for realtime comunication  
 
 ## How to Use
 

@@ -1,5 +1,5 @@
 // script.js (Guardado Automático Fiable - Sin Botón Force Save)
-import { GDB } from "https://cdn.jsdelivr.net/npm/gdb-p2p/+esm";
+import { GDB } from "https://cdn.jsdelivr.net/npm/genosdb/+esm";
 
 document.addEventListener('DOMContentLoaded', function () {
   // console.log("DOM Content Loaded. Initializing script (Reliable Auto Save)...");

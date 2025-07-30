@@ -1,5 +1,5 @@
 // script.js (Guardado Automático Fiable - Sin Botón Force Save)
-import { GraphDB } from "https://cdn.jsdelivr.net/npm/gdb-p2p/+esm";
+import { GDB } from "https://cdn.jsdelivr.net/npm/gdb-p2p/+esm";
 
 document.addEventListener('DOMContentLoaded', function () {
   // console.log("DOM Content Loaded. Initializing script (Reliable Auto Save)...");
@@ -27,13 +27,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   let livePixelData = new Map(); 
 
-  // === GraphDB Setup ===
+  // === GDB Setup ===
   let db;
   try {
-    db = new GraphDB(CANVAS_DB_NAME);
-    // console.log("GraphDB instance created:", CANVAS_DB_NAME);
+    db = new GDB(CANVAS_DB_NAME);
+    // console.log("GDB instance created:", CANVAS_DB_NAME);
   } catch (e) {
-    console.error("Failed to create GraphDB instance:", e); return; 
+    console.error("Failed to create GDB instance:", e); return; 
   }
   
   const [sendPaintAction, onPaintAction] = db.room.makeAction('paintPx', true); 
@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // === Start Application ===
   async function startApp() { /* ... sin cambios ... */ 
     // console.log("startApp called.");
-    if (typeof GraphDB === 'undefined') { console.error("GraphDB not loaded!"); return; }
+    if (typeof GDB === 'undefined') { console.error("GDB not loaded!"); return; }
     
     initCanvasStructure();    
     updateOnlineUsers();      

@@ -1,6 +1,4 @@
-// script.js (Guardado Automático Fiable - Sin Botón Force Save)
-// import { gdb } from "https://cdn.jsdelivr.net/npm/genosdb@latest/dist/index.min.js";
-import { gdb } from '../../gdb/dist/index.js'
+import { gdb } from "https://cdn.jsdelivr.net/npm/genosdb@latest/dist/index.min.js";
 
 document.addEventListener('DOMContentLoaded', () => {
   // Reliable Auto Save Pixel Painting App

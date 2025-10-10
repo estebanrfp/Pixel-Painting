@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (async () => {
     let db;
     try {
-      db = await gdb(CANVAS_DB_NAME);
+      db = await gdb(CANVAS_DB_NAME, { rtc: true });
     } catch (e) {
       console.error("Failed to create gdb instance:", e); return;
     }

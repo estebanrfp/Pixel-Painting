@@ -1,5 +1,7 @@
 # GenosDB P2P Multiplayer Pixel Painting Example
 
+![GenosDB P2P Realtime Pixel Painting — two browsers painting in sync, Online: 2](./pixelpainting.png)
+
 A simple application designed to help painters track their progress, gather inspiration, and manage their painting process effectively.
 
 ## Features

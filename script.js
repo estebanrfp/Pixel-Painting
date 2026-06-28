@@ -40,7 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const updateOnlineUsers = () => {
       if (!db.room || !onlineUsersSpan) return;
-      const count = db.room.getPeers().length + 1;
+      // getPeers() returns an object (or Map across builds) keyed by peerId, never an array.
+      const peers = db.room.getPeers() ?? {};
+      const peerCount = peers instanceof Map ? peers.size : Object.keys(peers).length;
+      const count = peerCount + 1; // connected peers + this client
       onlineUsersSpan.textContent = `Online: ${count}`;
     };
 
